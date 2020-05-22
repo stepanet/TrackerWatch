@@ -1,47 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14256" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16092.1" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc" pageOrientation="vertical">
+    <device id="watch44"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14243"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14219"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16082.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="16012"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--dayOpen-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
-            </objects>
-            <point key="canvasLocation" x="220" y="345"/>
-        </scene>
-        <!--Static Notification Interface Controller-->
-        <scene sceneID="AEw-b0-oYE">
-            <objects>
-                <notificationController id="YCC-NB-fut">
+                <controller identifier="dayOpen" alwaysBounce="YES" fullScreen="YES" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="TrackerWatch_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
+                        <label width="1" height="30" alignment="center" text="Label" id="3cu-pr-us6">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </label>
+                        <group width="1" alignment="center" radius="6" id="v9h-9U-zqY">
+                            <items>
+                                <label alignment="left" text="Z-FRONT" id="Mam-z7-SWK"/>
+                                <dateLabel width="96" alignment="left" textAlignment="center" baselineAdjustment="alignCenters" format="dd.MM.yyyy" id="oHT-py-Rdj">
+                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <date key="previewedDate" timeIntervalSinceReferenceDate="605470140">
+                                        <!--2020-03-09 18:09:00 +0000-->
+                                    </date>
+                                </dateLabel>
+                            </items>
+                        </group>
+                        <label width="1" height="20" alignment="left" text="Биржа: " textAlignment="left" id="Fo6-Ev-4t3">
+                            <color key="textColor" red="0.83654818263282704" green="0.88633364439999995" blue="0.86682906659021797" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <fontDescription key="font" type="system" weight="thin" pointSize="15"/>
+                        </label>
+                        <label width="1" height="20" alignment="left" text="Внебиржа: " textAlignment="left" id="YF4-eX-2PK">
+                            <color key="textColor" red="0.83654818263282704" green="0.88633364439999995" blue="0.86682906659021797" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <fontDescription key="font" type="system" weight="thin" pointSize="15"/>
+                        </label>
+                        <label width="1" height="20" alignment="left" text="Другие:" textAlignment="left" id="njT-v3-DOz">
+                            <color key="textColor" red="0.83654818263282704" green="0.88633364439999995" blue="0.86682906659021797" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <fontDescription key="font" type="system" weight="thin" pointSize="15"/>
+                        </label>
+                        <separator alignment="left" id="st2-wj-3ih">
+                            <color key="color" red="0.2918757796" green="0.56599164010000003" blue="0.88633364439999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </separator>
+                        <switch height="25" alignment="left" title="Комиссия" id="s7d-K0-Sco">
+                            <color key="titleColor" red="0.83654818259999997" green="0.88633364439999995" blue="0.86682906660000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="closeDayEnable:" destination="AgC-eL-Hgc" id="epe-Fo-e2P"/>
+                            </connections>
+                        </switch>
+                        <button width="1" height="35" alignment="center" verticalAlignment="center" title="закрыть день" id="8XC-oq-jt9">
+                            <color key="backgroundColor" red="0.2918757796" green="0.56599164010000003" blue="0.88633364439999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <fontDescription key="font" type="system" weight="medium" pointSize="18"/>
+                            <connections>
+                                <action selector="updateTapped" destination="AgC-eL-Hgc" id="Rec-Jc-5tV"/>
+                            </connections>
+                        </button>
                     </items>
-                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
                     <connections>
-                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
-                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
-                        <segue destination="eXb-UN-Cd0" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="mpB-YA-K8N"/>
+                        <outlet property="distance" destination="njT-v3-DOz" id="ws8-Ti-uf8"/>
+                        <outlet property="steps" destination="YF4-eX-2PK" id="Swu-g1-39T"/>
+                        <outlet property="time" destination="Fo6-Ev-4t3" id="4c9-mZ-iI7"/>
+                        <outlet property="updateBtn" destination="8XC-oq-jt9" id="wXt-2g-Mge"/>
+                        <segue destination="few-Li-lSe" kind="relationship" relationship="nextPage" id="qB6-5B-vsc"/>
                     </connections>
-                </notificationController>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="643"/>
+            <point key="canvasLocation" x="209" y="269"/>
         </scene>
-        <!--Notification Controller-->
-        <scene sceneID="ZPc-GJ-vnh">
+        <!--dayClose-->
+        <scene sceneID="zbv-fY-Fnb">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModuleProvider="target"/>
+                <controller identifier="dayClose" fullScreen="YES" id="few-Li-lSe">
+                    <items>
+                        <group width="1" alignment="center" verticalAlignment="center" layout="vertical" id="8ax-M1-diY">
+                            <items>
+                                <dateLabel width="1" height="55" alignment="left" textAlignment="center" baselineAdjustment="alignCenters" format="dd.MM.yyyy" id="h8h-s5-tBM">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="font" type="system" weight="medium" pointSize="20"/>
+                                    <date key="previewedDate" timeIntervalSinceReferenceDate="605470140">
+                                        <!--2020-03-09 18:09:00 +0000-->
+                                    </date>
+                                </dateLabel>
+                                <label width="1" height="52" alignment="center" text="День закрыт." textAlignment="center" numberOfLines="2" id="oeK-aA-Xuf">
+                                    <fontDescription key="font" type="system" pointSize="30"/>
+                                </label>
+                                <separator alignment="left" id="g89-v5-W1b"/>
+                                <label alignment="left" text="........" id="4N8-B8-eh1">
+                                    <color key="textColor" red="0.2918757796" green="0.56599164010000003" blue="0.88633364439999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </label>
+                                <button height="30" alignment="center" title="выход" id="yvr-7M-Sj0">
+                                    <color key="titleColor" red="0.2918757796" green="0.56599164010000003" blue="0.88633364439999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="font" type="system" pointSize="28"/>
+                                    <connections>
+                                        <segue destination="AgC-eL-Hgc" kind="push" id="Fcb-73-idN"/>
+                                    </connections>
+                                </button>
+                            </items>
+                            <color key="backgroundColor" red="0.2918757796" green="0.56599164010000003" blue="0.88633364439999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </group>
+                    </items>
+                    <color key="backgroundColor" red="0.2918757796" green="0.56599164010000003" blue="0.88633364439999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="468" y="643"/>
-        </scene>
-        <!--Notification Controller-->
-        <scene sceneID="Niz-AI-uX2">
-            <objects>
-                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModuleProvider="target"/>
-            </objects>
-            <point key="canvasLocation" x="468" y="345"/>
+            <point key="canvasLocation" x="459" y="64"/>
         </scene>
     </scenes>
 </document>
